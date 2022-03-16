@@ -34,7 +34,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Konsumentprisindex (KPI)-normaliserad kostnad
+          Konsumentprisindex-normaliserad kostnad
         </h1>
         <div className={styles.calc}>
           <input
@@ -45,7 +45,7 @@ export default function Home() {
             value={value}
             onChange={onChange}
           />
-          {"kr "} = {(value / kpi.value).toFixed(3)} normaliserad kostnad
+          {"kr "} = {(value / kpi.value).toFixed(3)} KPIn
         </div>
 
         <p className={styles.description}>
