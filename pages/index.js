@@ -17,7 +17,7 @@ export default function Home() {
   }, [data, error]);
 
   const [value, setValue] = useState(1000);
-  const [kpi, setKpi] = useState({});
+  const [kpi, setKpi] = useState({ value: 1000 });
 
   const onChange = (event) => {
     console.log(event);
@@ -33,24 +33,28 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>KPI-normaliserad kostnad</h1>
+        <h1 className={styles.title}>
+          Konsumentprisindex (KPI)-normaliserad kostnad
+        </h1>
         <div className={styles.calc}>
           <input
+            className={styles.input}
             type="text"
             name="amount"
             placeholder="1000"
             value={value}
             onChange={onChange}
           />
-          / KPI ({kpi.value}) ={(value / kpi.value).toFixed(3)}
+          {"kr "} = {(value / kpi.value).toFixed(3)} normaliserad kostnad
         </div>
 
         <p className={styles.description}>
-          Källa{" "}
+          Källa:{" "}
           <a href="https://www.scb.se/hitta-statistik/statistik-efter-amne/priser-och-konsumtion/konsumentprisindex/konsumentprisindex-kpi/">
             SCB
-          </a>{" "}
-          {kpi.unit}, {kpi.metadata}
+          </a>
+          {", KPI: "}
+          {kpi.value}, {kpi.unit}, {kpi.metadata}
         </p>
       </main>
     </div>
