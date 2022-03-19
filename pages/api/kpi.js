@@ -33,6 +33,9 @@ export default function handler(req, response) {
             .textContent;
           result[title] = { value: value, unit: unit, metadata: metadata };
         }
+        const cacheSeconds = 60 * 60 * 24;
+        // See: https://vercel.com/docs/concepts/functions/edge-caching#recommended-cache-control
+        res.setHeader("Cache-Control", `max-age=0, s-maxage=${cacheSeconds}`);
         response.status(200).json(result);
       });
     })
